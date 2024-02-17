@@ -3,6 +3,7 @@
 *.zst
 *.tar
 *.zip
+*.elf
 .BUILDINFO
 .MTREE
 .PKGINFO

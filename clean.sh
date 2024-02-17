@@ -12,3 +12,4 @@ rm -rf x86_64-*
 rm -rf zstd-*
 rm -f riscv32-virt.*
 rm -f qemu-riscv32-vrit.ld
+rm -f *.elf
