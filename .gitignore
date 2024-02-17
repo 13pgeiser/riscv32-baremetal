@@ -1,0 +1,13 @@
+*.exe
+*.7z
+*.zst
+*.tar
+*.zip
+.BUILDINFO
+.MTREE
+.PKGINFO
+mingw64
+x86_64-*
+zstd-*
+riscv32-virt.*
+qemu-riscv32-vrit.ld
