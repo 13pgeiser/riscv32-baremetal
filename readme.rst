@@ -334,3 +334,7 @@ Result:
     text    data     bss     dec     hex filename
     165       0       0     165      a5  step_06.elf
     Hello from RISC-V virtual implementation running in QEMU!
+
+******************************
+Seventh Step: Integrate Newlib
+******************************
