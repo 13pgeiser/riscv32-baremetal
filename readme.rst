@@ -248,3 +248,28 @@ These instructions must be encoded using 32 bits opcodes thus the ".option norvc
             ret
 
 The registers a0, a1 are encoding the operation and the parameter respectively.
+
+**********************************
+Fifth Step: Jump to main in C Code
+**********************************
+
+The fifth step adds some complexity in the linker script. It handles the main sections that are expected in a c program:
+ * .text : the program code
+ * .rodata: the read-only initialized constants
+ * .data: the writable initialized constants
+ * .bss: the variables not initialized.
+
+Jump to C means setting up the stack (even if we do not use it yet in this example).
+To do so, some memory space is reserved at the end of the bss section.
+
+The assembly code has very changes:
+
+.. code-block:: asm
+
+    ...
+    _start:
+            la sp, stack_top
+            jal main
+    ...
+
+Returning from main will call the semihost hosting code SYS_EXIT and stop QEMU.
