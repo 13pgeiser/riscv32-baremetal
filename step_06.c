@@ -12,9 +12,26 @@ void uart_write(const char* ptr) {
         *ns16550_thr = *ptr++;
     }
 }
-
-int main(int argc, char* argv[]) {
+int main(void) {
     const char* message = "Hello from RISC-V virtual implementation running in QEMU!\n";
     uart_write(message);
     return 0;
+}
+
+void semihost(int cause) {
+    asm volatile(
+        ".option norvc\n" // Mandatory! Semihost does not used compact instructions
+        "slli zero, zero, 0x1f\n"
+        "ebreak\n"
+        "srai zero, zero, 0x7\n"
+    );
+}
+
+void _start(void) __attribute__((__section__(".start")));
+void _start(void) {
+    asm volatile(
+        "la    sp, stack_top\n"
+        "jal   main\n"
+    );
+    semihost(0x18); // SYS_EXIT
 }
