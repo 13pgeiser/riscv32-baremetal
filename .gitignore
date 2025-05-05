@@ -12,3 +12,4 @@ x86_64-*
 zstd-*
 riscv32-virt.*
 qemu-riscv32-vrit.ld
+openocd-code
